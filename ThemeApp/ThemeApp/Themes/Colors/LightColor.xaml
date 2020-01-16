@@ -4,11 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="ThemeApp.Themes.Colors.LightColor">
 
-    <Color x:Key="PrimaryColor">#DDDDDD</Color>
-    <Color x:Key="PrimaryTextColor">#444444</Color>
-    <Color x:Key="SecondaryTextColor">#888888</Color>
+    <Color x:Key="PrimaryColor">#F1F2F4</Color>
+    <Color x:Key="PrimaryTextColor">#060C0D</Color>
+    <Color x:Key="SecondaryTextColor">#7A7A84</Color>
 
     <Color x:Key="PageBackgroundColor">#FFFFFF</Color>
-    <Color x:Key="ButtonBackgroundColor">#DDDDDD</Color>
-    <Color x:Key="CheckBoxColor">#444444</Color>
+    <Color x:Key="ButtonBackgroundColor">#F1F2F4</Color>
+    <Color x:Key="CheckBoxColor">#33C05E</Color>
 </ResourceDictionary>
