@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:contentViews="clr-namespace:ThemeApp.Templates.ContentViews;assembly=ThemeApp"
+             mc:Ignorable="d"
+             x:Class="ThemeApp.Pages.Themes.ThemesPage"
+             x:Name="ThisPage">
+
+   <Frame
+        Margin="20">
+
+        <StackLayout>
+
+            <CollectionView
+                x:Name="ColorCollectionView"
+                ItemSizingStrategy="MeasureFirstItem">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <contentViews:CheckboxView
+                            IsSelected="{Binding IsSelected}"
+                            Title="{Binding Title}"
+                            Description="{Binding Description}"
+                            TappedCommand="{Binding Source={x:Reference ThisPage}, Path=ColorOptionTappedCommand}"
+                            TappedCommandParameter="{Binding .}"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <CollectionView
+                x:Name="RadiusCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <contentViews:CheckboxView
+                            IsSelected="{Binding IsSelected}"
+                            Title="{Binding Title}"
+                            Description="{Binding Description}"
+                            TappedCommand="{Binding Source={x:Reference ThisPage}, Path=RadiusOptionTappedCommand}"
+                            TappedCommandParameter="{Binding .}"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- ajouter un option "automatique" ou non pour la couleur (sync avec settings appareil avec détection native du changement)/-->
+        </StackLayout>
+    </Frame>
+</ContentPage>

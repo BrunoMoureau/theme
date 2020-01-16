@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.2.0.709249" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Pages\Themes\ThemesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Welcome\WelcomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Templates\ContentViews\CheckboxView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Themes\LightTheme.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Pages\Themes\ThemesPage.xaml.cs">
+      <DependentUpon>ThemesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\ContentViews\CheckboxView.xaml.cs">
+      <DependentUpon>CheckboxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\Colors\DarkColor.xaml.cs">
+      <DependentUpon>DarkColor.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\Colors\LightColor.xaml.cs">
+      <DependentUpon>LightColor.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\Shapes\RoundedShape.xaml.cs">
+      <DependentUpon>RoundedShape.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\Shapes\SquaredShape.xaml.cs">
+      <DependentUpon>SquaredShape.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\DarkTheme.xaml.cs">
+      <DependentUpon>DarkTheme.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

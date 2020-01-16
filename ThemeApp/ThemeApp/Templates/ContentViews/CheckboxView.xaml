@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ThemeApp.Templates.ContentViews.CheckboxView"
+    x:Name="This">
+  
+    <ContentView.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnViewTapped"/>
+    </ContentView.GestureRecognizers>
+
+    <FlexLayout
+        InputTransparent="True"
+        Direction="Row"
+        AlignItems="Center">
+        
+        <CheckBox 
+            Margin="0, 0, 20, 0"
+            IsChecked="{Binding Source={x:Reference This}, Path=IsSelected, Mode=OneWay}"/>
+
+        <StackLayout
+            Orientation="Vertical"
+            Spacing="2">
+
+            <Label
+                Text="{Binding Source={x:Reference This}, Path=Title, Mode=OneWay}"
+                Style="{TemplateBinding BodyLabelStyle}"
+                BackgroundColor="{TemplateBinding }"/>
+
+            <Label
+                IsVisible="{Binding Source={x:Reference This}, Path=Description, Converter={StaticResource VisibilityConverter}, Mode=OneWay}"
+                Text="{Binding Source={x:Reference This}, Path=Description, Mode=OneWay}"
+                Style="{StaticResource CaptionLabelStyle}"/>
+        </StackLayout>
+    </FlexLayout>
+</ContentView>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:colors="clr-namespace:ThemeApp.Themes.Colors;assembly=ThemeApp"
+    xmlns:shapes="clr-namespace:ThemeApp.Themes.Shapes;assembly=ThemeApp"
+    x:Class="ThemeApp.Themes.DarkTheme">
+
+    <ResourceDictionary.MergedDictionaries>
+        <colors:DarkColor/>
+        <shapes:SquaredShape/>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:ThemeApp.Helpers.Converters;assembly=ThemeApp"
+             mc:Ignorable="d"
+             x:Class="ThemeApp.App">
+
+    <Application.Resources>
+
+        <!-- 
+            ResourceDictionary source property below is optional.
+            It is set to preserve XAML autocompletion in pages.
+            To set the app theme, use ThemeManager instead.
+        -->
+        <ResourceDictionary Source="Themes/LightTheme.xaml"/>
+
+        <converters:VisibilityConverter x:Key="VisibilityConverter"/>
+
+        <x:Double x:Key="FramePadding">20</x:Double>
+
+        <Style TargetType="ContentPage">
+            <Setter Property="BackgroundColor" Value="{DynamicResource PageBackgroundColor}" />
+        </Style>
+
+        <Style TargetType="NavigationPage">
+            <Setter Property="BackgroundColor" Value="{DynamicResource PageBackgroundColor}" />
+        </Style>
+
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
+            <Setter Property="Padding" Value="{StaticResource FramePadding}"/>
+            <Setter Property="CornerRadius" Value="{DynamicResource FrameCornerRadius}"/>
+        </Style>
+
+        <Style TargetType="CheckBox">
+            <Setter Property="Color" Value="{DynamicResource CheckBoxColor}" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}"/>
+        </Style>
+
+        <Style x:Key="HeaderLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="22" />
+        </Style>
+
+        <Style x:Key="BodyLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+
+        <Style x:Key="CaptionLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="10" />
+        </Style>
+
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}"/>
+            <Setter Property="FontSize" Value="Body" />
+            <Setter Property="CornerRadius" Value="{DynamicResource ButtonCornerRadius}" />
+            <Setter Property="BackgroundColor" Value="{DynamicResource ButtonBackgroundColor}" />
+        </Style>
+
+    </Application.Resources>
+</Application>
