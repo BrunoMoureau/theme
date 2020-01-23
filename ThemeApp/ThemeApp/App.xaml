@@ -32,6 +32,7 @@
             <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
             <Setter Property="Padding" Value="{StaticResource FramePadding}"/>
             <Setter Property="CornerRadius" Value="{DynamicResource FrameCornerRadius}"/>
+            <Setter Property="HasShadow" Value="False"/>
         </Style>
 
         <Style TargetType="CheckBox">

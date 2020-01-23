@@ -8,10 +8,12 @@
              x:Class="ThemeApp.Pages.Themes.ThemesPage"
              x:Name="ThisPage">
 
-   <Frame
+    <Frame
         Margin="20">
 
-        <StackLayout>
+        <FlexLayout
+            Direction="Column"
+            JustifyContent="Start">
 
             <CollectionView
                 x:Name="ColorCollectionView"
@@ -43,6 +45,6 @@
             </CollectionView>
 
             <!-- ajouter un option "automatique" ou non pour la couleur (sync avec settings appareil avec détection native du changement)/-->
-        </StackLayout>
+        </FlexLayout>
     </Frame>
 </ContentPage>

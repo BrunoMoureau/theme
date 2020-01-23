@@ -54,7 +54,6 @@ namespace ThemeApp.UWP
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                Forms.SetFlags("CollectionView_Experimental"); 
                 Forms.Init(e);
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)

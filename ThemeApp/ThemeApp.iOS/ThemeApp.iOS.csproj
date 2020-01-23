@@ -119,15 +119,19 @@
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.2.0.709249" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\ThemeApp\ThemeApp.csproj">
       <Project>{8130409C-BD64-4C80-A52E-6A915D427002}</Project>
       <Name>ThemeApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Essentials">
+      <Version>1.3.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms">
+      <Version>4.4.0.991537</Version>
+    </PackageReference>
   </ItemGroup>
 </Project>

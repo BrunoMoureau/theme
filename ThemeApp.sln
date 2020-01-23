@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemeApp.Android", "ThemeAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemeApp.iOS", "ThemeApp\ThemeApp.iOS\ThemeApp.iOS.csproj", "{ED187DEE-1DA4-4B5E-9918-F31EBC8972AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemeApp", "ThemeApp\ThemeApp\ThemeApp.csproj", "{ACDCE8C4-E81E-4383-B9A9-09DF20FDE7F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThemeApp", "ThemeApp\ThemeApp\ThemeApp.csproj", "{ACDCE8C4-E81E-4383-B9A9-09DF20FDE7F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
