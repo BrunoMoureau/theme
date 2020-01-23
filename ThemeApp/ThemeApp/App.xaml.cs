@@ -1,5 +1,6 @@
 ﻿using ThemeApp.Components.ThemeManager.Interfaces;
 using ThemeApp.Pages.Welcome;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace ThemeApp
@@ -10,8 +11,9 @@ namespace ThemeApp
         {
             InitializeComponent();
 
+            var test = AppInfo.RequestedTheme;
             DependencyService.Get<IThemeManager>().Load();
-
+            
             MainPage = new NavigationPage(new WelcomePage());
         }
 
