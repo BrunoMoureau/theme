@@ -4,6 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="ThemeApp.Themes.Shapes.RoundedShape">
 
-    <x:Int32 x:Key="FrameCornerRadius">10</x:Int32>
-    <x:Int32 x:Key="ButtonCornerRadius">10</x:Int32>
+    <x:Int32 x:Key="FrameCornerRadius">15</x:Int32>
+    <x:Int32 x:Key="ButtonCornerRadius">15</x:Int32>
 </ResourceDictionary>
