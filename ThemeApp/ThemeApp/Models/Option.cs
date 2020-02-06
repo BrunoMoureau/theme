@@ -39,5 +39,7 @@ namespace ThemeApp.Models
             _title = title;
             _description = description;
         }
+
+        public bool CanBeSelected() => IsSelected == false;
     }
 }

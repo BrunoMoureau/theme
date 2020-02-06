@@ -4,8 +4,13 @@ namespace ThemeApp.Components.ThemeManager.Interfaces
 {
     public interface IThemeManager
     {
-        ResourceDictionary Colors { get; set; }
-        ResourceDictionary Shapes { get; set; }
+        ThemeColor GetThemeColor();
+        void SetThemeColor(ThemeColor color);
+
+        ThemeShape GetThemeShape();
+        void SetThemeShape(ThemeShape shape);
+
+        void SetDefault();
 
         void Load();
     }

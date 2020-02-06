@@ -31,14 +31,14 @@
             </CollectionView>
 
             <CollectionView
-                x:Name="RadiusCollectionView">
+                x:Name="ShapeCollectionView">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <contentViews:CheckboxView
                             IsSelected="{Binding IsSelected}"
                             Title="{Binding Title}"
                             Description="{Binding Description}"
-                            TappedCommand="{Binding Source={x:Reference ThisPage}, Path=RadiusOptionTappedCommand}"
+                            TappedCommand="{Binding Source={x:Reference ThisPage}, Path=ShapeOptionTappedCommand}"
                             TappedCommandParameter="{Binding .}"/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

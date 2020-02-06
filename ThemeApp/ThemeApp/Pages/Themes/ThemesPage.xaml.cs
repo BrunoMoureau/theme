@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Windows.Input;
+using ThemeApp.Components.ThemeManager;
 using ThemeApp.Components.ThemeManager.Interfaces;
 using ThemeApp.Models;
-using ThemeApp.Themes.Colors;
-using ThemeApp.Themes.Shapes;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,109 +11,78 @@ namespace ThemeApp.Pages.Themes
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ThemesPage
     {
-        private ICommand _colorOptionTappedCommand;
-        private ICommand _radiusOptionTappedCommand;
+        public ICommand ColorOptionTappedCommand { get; }
+        public ICommand ShapeOptionTappedCommand { get; }
 
-        public ICommand ColorOptionTappedCommand => 
-            _colorOptionTappedCommand ?? (_colorOptionTappedCommand = new Command<Option<ResourceDictionary>>(option =>
+        private void ThemeColorOptionTapped(Option<ThemeColor> option)
         {
-            if (option.IsSelected)
+            if (ColorCollectionView.ItemsSource is IEnumerable<Option<ThemeColor>> items)
             {
-                Trace.WriteLine("The color option is already selected");
-                return;
+                var options = new OptionCollection<ThemeColor>(items);
+                options.Select(option.Value);
             }
 
-            if (ColorCollectionView.ItemsSource is IEnumerable<Option<ResourceDictionary>> options)
-            {
-                SelectOption(options, option);
-            }
-
-            DependencyService.Get<IThemeManager>().Colors = option.Value;
+            DependencyService.Get<IThemeManager>().SetThemeColor(option.Value);
             DependencyService.Get<IThemeManager>().Load();
-        }));
+        }
 
-        public ICommand RadiusOptionTappedCommand => 
-            _radiusOptionTappedCommand ?? (_radiusOptionTappedCommand = new Command<Option<ResourceDictionary>>(option =>
+        private void ThemeShapeOptionTapped(Option<ThemeShape> option)
         {
-            if (option.IsSelected)
+            if (ShapeCollectionView.ItemsSource is IEnumerable<Option<ThemeShape>> items)
             {
-                Trace.WriteLine("The radius option is already selected");
-                return;
+                var options = new OptionCollection<ThemeShape>(items);
+                options.Select(option.Value);
             }
 
-            if (RadiusCollectionView.ItemsSource is IEnumerable<Option<ResourceDictionary>> options)
-            {
-                SelectOption(options, option);
-            }
-            
-            DependencyService.Get<IThemeManager>().Shapes = option.Value;
+            DependencyService.Get<IThemeManager>().SetThemeShape(option.Value);
             DependencyService.Get<IThemeManager>().Load();
-        }));
+        }
 
         public ThemesPage()
         {
             InitializeComponent();
 
+            ColorOptionTappedCommand = new Command<Option<ThemeColor>>(ThemeColorOptionTapped, option => option.CanBeSelected());
+            ShapeOptionTappedCommand = new Command<Option<ThemeShape>>(ThemeShapeOptionTapped, option => option.CanBeSelected());
+            
             FillColorOptions();
-            FillRadiusOptions();
+            FillShapeOptions();
         }
 
         private void FillColorOptions()
         {
             var options = GetColorOptions();
-            var currentType = DependencyService.Get<IThemeManager>().Colors;
-            var selectedOption = GetCurrentOption(options, currentType);
-            SelectOption(options, selectedOption);
+            var color = DependencyService.Get<IThemeManager>().GetThemeColor();
+            options.Select(color);
 
-            Trace.WriteLine("Assign color options to the CollectionView");
-            ColorCollectionView.ItemsSource = options;
+            ColorCollectionView.ItemsSource = options.Items;
         }
 
-        private void FillRadiusOptions()
+        private void FillShapeOptions()
         {
-            var options = GetRadiusOptions();
-            var currentType = DependencyService.Get<IThemeManager>().Shapes;
-            var selectedOption = GetCurrentOption(options, currentType);            
-            SelectOption(options, selectedOption);
+            var options = GetShapeOptions();
+            var shape = DependencyService.Get<IThemeManager>().GetThemeShape();
+            options.Select(shape);
 
-            Trace.WriteLine("Assign radius options to the CollectionView");
-            RadiusCollectionView.ItemsSource = options;
+            ShapeCollectionView.ItemsSource = options.Items;
         }
 
-        private static Option<ResourceDictionary>[] GetColorOptions()
+        private static OptionCollection<ThemeColor> GetColorOptions()
         {
-            return new[]
+            return new OptionCollection<ThemeColor>(new[]
             {
-                new Option<ResourceDictionary>(false, new LightColor(), "Light Color"),
-                new Option<ResourceDictionary>(false, new DarkColor(), "Dark Color")
-            };
+                new Option<ThemeColor>(false, ThemeColor.Light, "Light Color"),
+                new Option<ThemeColor>(false, ThemeColor.Dark, "Dark Color")
+            });
         }
-
-        private static Option<ResourceDictionary>[] GetRadiusOptions()
+        
+        private static OptionCollection<ThemeShape> GetShapeOptions()
         {
-            return new[]
+            return new OptionCollection<ThemeShape>(new[]
             {
-                new Option<ResourceDictionary>(false, new SquaredShape(), "Squared Shapes"),
-                new Option<ResourceDictionary>(false, new RoundedShape(), "Rounded Shapes")
-            };
-        }
-
-        private Option<ResourceDictionary> GetCurrentOption(IEnumerable<Option<ResourceDictionary>> options, ResourceDictionary resourceDictionary)
-        {
-            var resourceDictionaryName = resourceDictionary.GetType().Name;
-            return options.First(o => o.Value.GetType().Name.Equals(resourceDictionaryName));
-        }
-
-        private void SelectOption(IEnumerable<Option<ResourceDictionary>> options, Option<ResourceDictionary> selectedOption)
-        {
-            Trace.WriteLine("Select option");
-
-            foreach (var option in options)
-            {
-                option.IsSelected = false;
-            }
-
-            selectedOption.IsSelected = true;
+                new Option<ThemeShape>(false, ThemeShape.Squared, "Squared Shapes"),
+                new Option<ThemeShape>(false, ThemeShape.Rounded, "Rounded Shapes")
+            });
         }
     }
 }

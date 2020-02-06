@@ -24,8 +24,7 @@
 
             <Label
                 Text="{Binding Source={x:Reference This}, Path=Title, Mode=OneWay}"
-                Style="{TemplateBinding BodyLabelStyle}"
-                BackgroundColor="{TemplateBinding }"/>
+                Style="{StaticResource BodyLabelStyle}"/>
 
             <Label
                 IsVisible="{Binding Source={x:Reference This}, Path=Description, Converter={StaticResource VisibilityConverter}, Mode=OneWay}"
