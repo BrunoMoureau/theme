@@ -11,7 +11,8 @@ namespace ThemeApp.Components.ThemeManager
 
         public T GetPreferences()
         {
-            var settingsValue = Preferences.Get(SettingsKey, GetEnumName(DefaultValue));
+            var defaultValue = GetEnumName(DefaultValue);
+            var settingsValue = Preferences.Get(SettingsKey, defaultValue); 
             return (T)Enum.Parse(typeof(T), settingsValue); //todo what happens if enum values has been refactored?
         }
 
