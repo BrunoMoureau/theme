@@ -7,6 +7,7 @@ namespace ThemeApp.Components.ThemeManager
 {
     public enum ThemeColor
     {
+        Auto,
         Light,
         Dark
     }
@@ -23,9 +24,13 @@ namespace ThemeApp.Components.ThemeManager
 
         public ResourceDictionary GetResourceDictionary()
         {
-            var color = GetPreferences();
+            var preferredColor = GetPreferences();
+            if (preferredColor == ThemeColor.Auto)
+            {
+                preferredColor = GetDeviceThemeColorOrDefault();
+            }
 
-            switch (color)
+            switch (preferredColor)
             {
                 case ThemeColor.Light:
                     return new LightColor();
@@ -33,7 +38,7 @@ namespace ThemeApp.Components.ThemeManager
                     return new DarkColor();
 
                 default:
-                    throw new ArgumentOutOfRangeException($"Missing case in {nameof(ThemeColorSettings)} for type {Enum.GetName(typeof(ThemeColor), color)}");
+                    throw new ArgumentOutOfRangeException($"Missing case in {nameof(ThemeColorSettings)} for type {Enum.GetName(typeof(ThemeColor), preferredColor)}");
             }
         }
 

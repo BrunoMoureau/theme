@@ -71,6 +71,7 @@ namespace ThemeApp.Pages.Themes
         {
             return new OptionCollection<ThemeColor>(new[]
             {
+                new Option<ThemeColor>(false, ThemeColor.Auto, "Default Device Color"),
                 new Option<ThemeColor>(false, ThemeColor.Light, "Light Color"),
                 new Option<ThemeColor>(false, ThemeColor.Dark, "Dark Color")
             });

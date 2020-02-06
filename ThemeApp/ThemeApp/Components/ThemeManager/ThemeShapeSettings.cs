@@ -17,9 +17,9 @@ namespace ThemeApp.Components.ThemeManager
 
         public ResourceDictionary GetResourceDictionary()
         {
-            var shape = GetPreferences();
+            var preferredShape = GetPreferences();
             
-            switch (shape)
+            switch (preferredShape)
             {
                 case ThemeShape.Squared:
                     return new SquaredShape();
@@ -27,7 +27,7 @@ namespace ThemeApp.Components.ThemeManager
                     return new RoundedShape();
 
                 default:
-                    throw new ArgumentOutOfRangeException($"Missing case in {nameof(ThemeShapeSettings)} for type {Enum.GetName(typeof(ThemeShape), shape)}");
+                    throw new ArgumentOutOfRangeException($"Missing case in {nameof(ThemeShapeSettings)} for type {Enum.GetName(typeof(ThemeShape), preferredShape)}");
             }
         }
     }
